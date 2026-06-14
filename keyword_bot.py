@@ -3,7 +3,7 @@ import os
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import threading
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "8759639066:AAEL-GZz07N31r_y1sFLwmPSK6S3hydhZzQ")
+BOT_TOKEN = "8759639066:AAEL-GZz07N31r_y1sFLwmPSK6S3hydhZzQ"
 
 bot = telebot.TeleBot(BOT_TOKEN)
 users = {}
@@ -41,8 +41,7 @@ def set_keywords(message):
     users[user_id]["step"] = "waiting_keywords"
     bot.send_message(user_id,
         "✏️ Kalit so'zlarni kiriting (vergul bilan ajrating):\n\n"
-        "Misol: ish, vakansiya, ishga qabul",
-        parse_mode="Markdown")
+        "Misol: ish, vakansiya, ishga qabul")
 
 @bot.message_handler(commands=["mykeywords"])
 def my_keywords(message):
@@ -104,7 +103,7 @@ def handle_group(message):
             msg_link = ""
             if message.chat.type == "supergroup":
                 chat_id_str = str(message.chat.id).replace("-100", "")
-                msg_link = f"\n🔗 Xabarga o'tish: https://t.me/c/{chat_id_str}/{message.message_id}"
+                msg_link = f"\nXabarga o'tish: https://t.me/c/{chat_id_str}/{message.message_id}"
             bot.send_message(user_id,
                 f"🔔 Kalit so'z topildi!\n\n"
                 f"👥 Gurux: {group_name}\n"
